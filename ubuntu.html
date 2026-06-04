@@ -1,0 +1,45 @@
+╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+                               ██╗   ██╗██████╗ ██╗   ██╗███╗   ██╗████████╗██╗   ██╗
+                               ██║   ██║██╔══██╗██║   ██║████╗  ██║╚══██╔══╝██║   ██║
+                               ██║   ██║██████╔╝██║   ██║██╔██╗ ██║   ██║   ██║   ██║
+                               ██║   ██║██╔══██╗██║   ██║██║╚██╗██║   ██║   ██║   ██║
+                               ╚██████╔╝██████╔╝╚██████╔╝██║ ╚████║   ██║   ╚██████╔╝
+                                ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝    ╚═════╝ 
+                                           ⪼  𝘽𝙮 𝘾𝙝𝙧𝙞𝙨𝙩𝙞𝙖𝙣 𝙃𝙚𝙧𝙧𝙚𝙧𝙖   ⪻
+
+   ┬ ⚙️ Adm. de Usuarios
+   │  ├ 📌 Creación
+   │  │  ├ useradd usuario                       ⮞ Crea usuario sin home ni shell
+   │  │  └ useradd -{m|M} -s /bin/false usuario  ⮞ Crea usuario sin shell. {-m} crea home, {-M} no lo crea
+   │  │
+   │  ├ 📌 Modificacion
+   │  │  ├ usermod -s /bin/bash usuario          ⮞ Cambia el shell del usuario
+   │  │  ├ usermod -d /nuevo/home {-m} usuario   ⮞ Cambia el directorio home del usuario. {-m} mueve los archivos
+   │  │  ├ usermod -aG grupo usuario             ⮞ Agrega el usuario a un grupo
+   │  │  └ usermod -{L|U} usuario                ⮞ Bloquea {-L} o desbloquea {-U} la cuenta del usuario
+   │  │
+   │  ├ 📌 Eliminar Usuarios
+   │  │  └ userdel {-r} usuario                  ⮞ Elimina usuario, agregando {-r} elimina su home y archivos
+   │  │
+   │  └ 📌 Contraseñas
+   │     ├ passwd usuario                        ⮞ Cambia la contraseña del usuario
+   │     └ passwd -{l|u} usuario                 ⮞ Bloquea {-l} o desbloquea {-u} la contraseña del usuario
+   │
+   ├ ⚙️ Adm. de Grupos
+   │  ├ groupadd grupo                           ⮞ Crea un nuevo grupo
+   │  ├ groupdel grupo                           ⮞ Elimina un grupo
+   │  ├ groupmod -n nuevo_grupo grupo            ⮞ Cambia el nombre del grupo
+   │  ├ gpasswd -a usuario grupo                 ⮞ Agrega un usuario al grupo
+   │  ├ gpasswd -d usuario grupo                 ⮞ Elimina un usuario del grupo
+   │  └ gpasswd -M "usuario1,usuario2" grupo     ⮞ Define los usuarios del grupo
+   │
+   ├ 📂 Permisos ( [r:4], [w:2] y [x:1] )
+   │  └ chmod {-R} 760 archivo                   ⮞ [rwx][rw-][---] Permisos para usuario, grupo y otros
+   │
+   ├ 📂 Dueños
+   │  └ chown {-R} usuario:grupo archivo         ⮞ Cambia el dueño y grupo del archivo
+   ·
+   ·
+   ·
+╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝

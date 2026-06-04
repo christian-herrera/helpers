@@ -1,0 +1,56 @@
+╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+                               ██████╗  ██████╗  ██████╗██╗  ██╗███████╗██████╗ 
+                               ██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+                               ██║  ██║██║   ██║██║     █████╔╝ █████╗  ██████╔╝
+                               ██║  ██║██║   ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+                               ██████╔╝╚██████╔╝╚██████╗██║  ██╗███████╗██║  ██║
+                               ╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                           ⪼  𝘽𝙮 𝘾𝙝𝙧𝙞𝙨𝙩𝙞𝙖𝙣 𝙃𝙚𝙧𝙧𝙚𝙧𝙖   ⪻
+
+   ┬ ⚙️ Imagenes: Son plantillas inmutables que contienen todo lo necesario para ejecutar una aplicación.
+   │  ├ docker images {prune}             ⮞ Lista las imagenes locales. Agregar `prune` elimina las no utilizadas
+   │  ├ docker pull {imagen:version}      ⮞ Descarga una imagen del repositorio
+   │  ├ docker rmi {imagen|id}            ⮞ Elimina una imagen del sistema
+   │  ├ docker build -r {nombre}          ⮞ Construye una nueva imagen usando un Dockerfile
+   │  └ docker run {imagen:version}       ⮞ Descarga una imagen del repositorio y la ejecuta. Se puede agregar:
+   │     ├ -d                             ⮞ Modo detached (en segundo plano)
+   │     ├ -p                             ⮞ Mapea puertos (host:contenedor)
+   │     ├ -v                             ⮞ Mapea volumenes (host:contenedor)
+   │     ├ -e                             ⮞ Define variables de entorno (KEY=VALUE)
+   │     ├ --name {xxxx}                  ⮞ Asigna un nombre al contenedor
+   │     └ --network {xxxx}               ⮞ Asigna una red al contenedor
+   │
+   ├ ⚙️ Contenedores: Son instancias en ejecución de las imágenes.
+   │  ├ docker ps {-a}                    ⮞ Lista los contenedores (activos/inactivos)
+   │  ├ docker start|stop {nombre|id}     ⮞ Inicia/Detiene un contenedor
+   │  ├ docker rm {-f} {nombre|id}        ⮞ Elimina un contenedor detenido
+   │  └ docker container prune            ⮞ Elimina todos los contenedores detenidos
+   │
+   ├ 📂 Volumenes: Es un espacio de almacenamiento persistente que vive fuera del contenedor.
+   │  ├ docker volume ls                  ⮞ Lista los volumenes disponibles
+   │  ├ docker volume create {nombre}     ⮞ Crea un volumen
+   │  ├ docker volume rm {nombre}         ⮞ Elimina un volumen
+   │  └ docker volume prune               ⮞ Elimina todos los volumenes no utilizados
+   │
+   ├ 🔗 Redes: Una red Docker conecta contenedores entre sí, o con el mundo exterior.
+   │  ├ docker network ls                 ⮞ Lista las redes disponibles
+   │  ├ docker network rm {nombre}        ⮞ Elimina una red
+   │  ├ docker network prune              ⮞ Elimina todas las redes no utilizadas
+   │  └ docker network create --driver {xxxx} --subnet {yyyy} --gateway {zzzz} {nombre}
+   │     ├ bridge                         ⮞ Red privada dentro del host. Los contenedores pueden comunicarse entre sí.
+   │     ├ host                           ⮞ El contenedor usa directamente la red del host. No hay aislamiento.
+   │     ├ none                           ⮞ Sin red (aislamiento total)
+   │     ├ overlay                        ⮞ Red que conecta contenedores en multiples hosts Docker (usado en Swarm)
+   │     └ macvlan                        ⮞ Asigna una IP del mismo rango que el host al contenedor.
+   │
+   ├ 🧩 Compose: Permite levantar los contenedores desde el archivo `docker-compose.yml`.
+   │  ├ docker compose ps                 ⮞ Lista los contenedores gestionados por Compose
+   │  ├ docker compose build              ⮞ Construye o reconstruye los servicios (solo si hay build: definido)
+   │  ├ docker compose up {-d}            ⮞ Levanta los servicios definidos en el archivo
+   │  ├ docker compose start|stop         ⮞ Inicia/Detiene los servicios definidos en el archivo (sin borrar nada)
+   │  ├ docker compose restart            ⮞ Reinicia los servicios definidos en el archivo
+   ·  └ docker compose down               ⮞ Detiene y elimina contenedores, redes y volúmenes creados.
+   ·
+   ·
+╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝

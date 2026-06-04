@@ -1,0 +1,49 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+                                 ███╗   ███╗██╗   ██╗███████╗ ██████╗ ██╗     
+                                 ████╗ ████║╚██╗ ██╔╝██╔════╝██╔═══██╗██║     
+                                 ██╔████╔██║ ╚████╔╝ ███████╗██║   ██║██║     
+                                 ██║╚██╔╝██║  ╚██╔╝  ╚════██║██║▄▄ ██║██║     
+                                 ██║ ╚═╝ ██║   ██║   ███████║╚██████╔╝███████╗
+                                 ╚═╝     ╚═╝   ╚═╝   ╚══════╝ ╚══▀▀═╝ ╚══════╝
+                                         ⪼ 𝘽𝙮 𝘾𝙝𝙧𝙞𝙨𝙩𝙞𝙖𝙣 𝙃𝙚𝙧𝙧𝙚𝙧𝙖 ⪻
+
+   ┬ 🔑 Crear Usuario
+   │  ├ DROP USER 'chris'@'host';                                                ⮞ Elimina usuario
+   │  ├ CREATE USER 'chris'@'host' IDENTIFIED BY 'clave';                        ⮞ Crea usuario
+   │  ├ ALTER USER 'chris'@'host' IDENTIFIED BY 'nueva_clave';                   ⮞ Cambia clave
+   │  └ SELECT user,host,plugin FROM mysql.user;                                 ⮞ Ver usuarios
+   │
+   ├ 🔏 Privilegios
+   │  ├ SHOW GRANTS FOR 'chris'@'host';                                          ⮞ Muestra privilegios
+   │  ├ GRANT ALL PRIVILEGES ON *.* TO 'chris'@'host' WITH GRANT OPTION;         ⮞ Convierte en admin
+   │  ├ GRANT {SELECT,...|ALL} PRIVILEGES ON `db`.`table` TO 'chris'@'host';     ⮞ Otorga privilegios
+   │  ├ REVOKE {SELECT,...|ALL} PRIVILEGES ON `db`.`table` FROM 'chris'@'host';  ⮞ Revoca privilegios
+   │  └ FLUSH PRIVILEGES;                                                        ⮞ Aplica cambios
+   │
+   ├ 🗄️ Bases de Datos
+   │  ├ SHOW DATABASES;                                                  ⮞ Muestra bases de datos
+   │  ├ CREATE DATABASE `db_name`;                                       ⮞ Crea base de datos
+   │  ├ DROP DATABASE `db_name`;                                         ⮞ Elimina base de datos
+   │  ├ USE `db_name`;                                                   ⮞ Selecciona base de datos
+   │  └ SELECT DATABASE();                                               ⮞ Muestra base de datos actual
+   │
+   ├ 📋 Tablas
+   │  ├ SHOW TABLES;                                                     ⮞ Muestra las tablas
+   │  ├ DESCRIBE `table_name`;                                           ⮞ Muestra estructura de tabla
+   │  ├ CREATE TABLE `table_name` ( ... );                               ⮞ Crea tabla
+   │  ├ DROP TABLE `table_name`;                                         ⮞ Elimina tabla
+   │  ├ RENAME TABLE `old_name` TO `new_name`;                           ⮞ Renombra tabla
+   │  └ TRUNCATE TABLE `table_name`;                                     ⮞ Elimina todos los registros
+   │
+   ├ 🔍 Consultas Básicas
+   │  ├ SELECT * FROM `tabla` WHERE {...} LIMIT {...};                   ⮞ Selecciona registros
+   │  ├ INSERT INTO `tabla` (`col1`, `col2`) VALUES ('v1', 'v2');        ⮞ Inserta registro
+   │  ├ UPDATE `tabla` SET `col1`='v1' WHERE {...};                      ⮞ Actualiza registro
+   │  ├ DELETE FROM `tabla` WHERE {...};                                 ⮞ Elimina registro
+   │  └ SELECT COUNT(*) FROM `tabla` WHERE {...};                        ⮞ Cuenta registros
+   ·  
+   ·  
+   ·
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
