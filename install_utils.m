@@ -27,7 +27,7 @@ end
 [status, msh] = copyfile(fullfile(folder_name, "Utils"), destino);
 
 if(status)
-    fprintf("\n<strong>Repositorio instalado en la máquina con éxito!</strong>\n\n");
+    fprintf("\n<strong>Repositorio (v%s) instalado en la máquina con éxito!</strong>\n\n", tag);
     addpath(genpath(destino));
     savepath;
 else
