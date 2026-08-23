@@ -1,0 +1,57 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+              ██████╗ ██████╗  ██████╗       ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     
+             ██╔════╝ ██╔══██╗██╔════╝       ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     
+             ██║  ███╗██████╔╝██║  ███╗█████╗██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     
+             ██║   ██║██╔═══╝ ██║   ██║╚════╝██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     
+             ╚██████╔╝██║     ╚██████╔╝      ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗
+              ╚═════╝ ╚═╝      ╚═════╝       ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝
+                                           ⪼ 𝘽𝙮 𝘾𝙝𝙧𝙞𝙨𝙩𝙞𝙖𝙣 𝙃𝙚𝙧𝙧𝙚𝙧𝙖 ⪻
+
+1) Instalar Gpg4Win (https://www.gnupg.org/download/index.html)
+
+2) Configurar los archivos:
+
+   ┌─ %APPDATA%/gnupg/gpg.conf ──────────────────────────────────────
+   │ use-agent
+   │ armor
+   └─────────────────────────────────────────────────────────────────
+   ┌─ %APPDATA%/gnupg/gpg-agent.conf ────────────────────────────────
+   │ enable-ssh-support
+   │ enable-win32-openssh-support
+   │ use-standard-socket
+   │ default-cache-ttl 600
+   │ max-cache-ttl 7200
+   │ default-cache-ttl-ssh 600
+   │ max-cache-ttl-ssh 7200
+   │ #pinentry-program "C:/Program Files/Gpg4win/bin/pinentry.exe"
+   └─────────────────────────────────────────────────────────────────
+   ┌─ %APPDATA%/gnupg/scdaemon.conf ─────────────────────────────────
+   │ disable-ccid
+   └─────────────────────────────────────────────────────────────────
+
+3) Utilizar los siguientes comandos para inicializar y detener el agente:
+    ├ gpgconf --kill all
+    └ gpgconf --launch gpg-agent
+    
+4) Exportar la clave para usar con SSH en el path C:\Users\XXXXXXXXX\.ssh\id_personal:
+    └ gpg --export-ssh-key $authID > id_personal
+    
+5) Configurar los Hosts para usar la clave SSH exportada:
+
+   ┌─ C:\Users\XXXXXXXXX\.ssh\config ──────────────────────────────
+   │ Host *
+   │     IdentitiesOnly yes
+   │     PreferredAuthentications publickey,password
+   │     ForwardAgent yes
+   │ 
+   │ Host github.com
+   │     HostName github.com
+   │     User git
+   │     Port 80
+   │     IdentityFile C:\Users\XXXXXXXXX\.ssh\id_personal
+   └───────────────────────────────────────────────────────────────
+
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+

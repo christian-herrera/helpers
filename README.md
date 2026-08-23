@@ -6,8 +6,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/christian-herrera/helpers)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/christian-herrera/helpers)
 
-
-
 ![GitHub License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/christian-herrera/helpers?style=for-the-badge&color=%23FF6B2B)
 
@@ -18,13 +16,15 @@ Este repositorio permite tener los apuntes rápidos sobre diversos temas, alguno
 La forma de utilizarlos es haciendo un CURL de la siguiente forma:
 
 ```bash
-curl -fsSL helpers.christianherrera.com.ar
+curl -fsSL helpers.christianherrera.com.ar    # Bash y PowerShell 6+
+irm helpers.christianherrera.com.ar           # PowerShell 1+
 ```
 
 Y para los archivos cifrados, simplemente usar:
 
 ```bash
-curl -fsSL helpers.christianherrera.com.ar/ports | gpg -d
+curl -fsSL helpers.christianherrera.com.ar | gpg -d    # Bash y PowerShell 6+
+irm helpers.christianherrera.com.ar | gpg -d           # PowerShell 1+
 ```
 
 <br>

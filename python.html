@@ -11,7 +11,9 @@
 
     ┬ 🪒 Entorno Virtual
     │  ├ python -m venv .venv                 ⮞ Crea el entorno en la carpeta .venv
-    │  ├ source .venv/bin/activate            ⮞ Activa el entorno virtual
+    │  │ ├ source .venv/bin/activate          ⮞ Linux
+    │  │ ├ .venv/Scripts/Activate.ps1         ⮞ Windows (Powershell)
+    │  │ └ .venv/Scripts/activate.bas         ⮞ Windows (CMD)
     │  └ deactivate                           ⮞ Desactiva el entorno virtual
     │
     ├ 📦 Dependencias
@@ -20,7 +22,7 @@
     │  ├ pip install {--upgrade} [paquete]    ⮞ Instala {o actualiza} el paquete
     │  ├ pip uninstall [paquete]              ⮞ Desinstala paquete
     ·  ├ pip list --outdated                  ⮞ Muestra paquetes desactualizados
-    ·  └ pip show {paquete}                     ⮞ Muestra info del paquete
+    ·  └ pip show {paquete}                   ⮞ Muestra info del paquete
     ·
     ·
 ╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝

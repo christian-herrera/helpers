@@ -6,10 +6,11 @@
 - [Text To ASCII (Individual)](https://patorjk.com/software/taag/#p=display&h=1&f=ANSI%20Shadow&t=Helpers)
 - [Tabla ASCII](https://elcodigoascii.com.ar/)
 
-
 # GnuPG
-Cifrar usando:
+
+Utilizar:
 
 ```bash
-gpg -o ports -r $encID! -r $enc2ID! -e ports.dev
+gpg -o ports -r $encID! -r $enc2ID! -e ports.dev    # Cifrar
+gpg -o ports.dev -d ports                           # Descifrar
 ```
