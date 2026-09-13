@@ -1,0 +1,67 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+                                   ██████╗    ██╗ ██████╗   ██╗      ██╗      
+                                  ██╔════╝   ██╔╝██╔════╝   ██║      ██║      
+                                  ██║       ██╔╝ ██║     ████████╗████████╗
+                                  ██║      ██╔╝  ██║     ╚══██╔══╝╚══██╔══╝
+                                  ╚██████╗██╔╝   ╚██████╗   ██║      ██║   
+                                   ╚═════╝╚═╝     ╚═════╝   ╚═╝      ╚═╝      
+                                         ⪼ 𝘽𝙮 𝘾𝙝𝙧𝙞𝙨𝙩𝙞𝙖𝙣 𝙃𝙚𝙧𝙧𝙚𝙧𝙖 ⪻
+
+   ┬ 🚀 int SPRINTF(char *buffer, const char *format, ...)
+   │  ├ Copia la salida formateada a un buffer del tipo `char array`. Retorna la cantidad de caracteres
+   │  │ escritos (sin contar el caracter nulo `\0`), o un valor negativo si ocurre un error.
+   │  │ 
+   │  └ El string `format` tiene la estructura:  %[flags][width][.precision][length]specifier
+   │     ├ [flags]:
+   │     │   ├ `0` Rellena los espacios vacíos con ceros en lugar de espacios
+   │     │   ├ `+` Muestra el signo del número (por defecto solo se muestra el signo negativo)
+   │     │   ├ `-` Alinea el contenido a la izquierda (por defecto es a la derecha)
+   │     │   └ ` ` Muestra un espacio en lugar del signo positivo
+   │     ├ [width]: Especifica el número minimo de caracteres que ocupará la impresión.
+   │     ├ [.precision]: Indica la cantidad de dígitos a mostrar despues del punto decimal.
+   │     ├ [length]: Especifica la longitud del tipo de dato.
+   │     │   ├ `l` para 32 bits.
+   │     │   ├ `ll` para 64 bits.
+   │     │   └ `h` para 16 bits.
+   │     └ [specifier]: Indica el tipo de dato a imprimir. Se utiliza alguno de los siguientes:
+   │     
+   │          Format Specifier │     Tipo      │                    Descripción
+   │          ─────────────────┼───────────────┼──────────────────────────────────────────────────────
+   │               %d %i       │     int       │   Enteros con signo
+   │              %u %o %x     │ unsigned int  │   Enteros sin signo [decimal, octal hexadecimal]
+   │              %f %e %g     │ float, double │   Números de punto flotante [decimal, not. cientifica]
+   │                %c         │     char      │   Caracteres individuales
+   │                %s         │  char array   │   Cadenas de caracteres
+   │                %%         │     N/A       │   Caracter `%`
+   │
+   ├ 🚀 char *STRCPY(char *string1, const char *string2);
+   │  └ Copia string2, incluido el carácter nulo final, en la ubicación especificada por string1. Devuelve
+   │    el puntero a string1.
+   │
+   ├ 🚀 char *STRCAT(char *string1, const char *string2);
+   │  └ Concatena string2 con string1 y finaliza la cadena resultante con el carácter nulo. Devuelve el
+   │    puntero a string1.
+   │
+   ├ 🚀 int STRCMP(const char *string1, const char *string2);
+   │  └ Compara string1 y string2. La función opera en series con final nulo. Los argumentos de serie para
+   │    la función deben contener un carácter nulo (\0) que marque el final de la serie. Devuelve:
+   │     ├ Menor a 0 -> sstring1 < string2
+   │     ├ Igual a 0 -> string1 == string2
+   │     └ Mayor a 0 -> string1 > string2
+   │
+   ├ 🚀 size_t strlen(const char *string);
+   │  └ Devuelve la longitud de la cadena `string`, excluyendo el carácter nulo final. La función opera en series
+   │
+   ├ 🚀 Conversión de Texto a Número
+   │  ├ int valor   = atoi(const char *string);  // "3.14" -> 3 (int)
+   │  ├ long valor  = atol(const char *string);  // "3.14" -> 3 (long)
+   │  └ float valor = atof(const char *string);  // "3.14" -> 3.14
+   ·  
+   ·  
+   ·
+
+   Notas: Agregar `N` a los comandos, dejandolos como `snprintf`, `strncpy`, `strncat` o `strncmp` hace que
+          la salida sea limitada a N caracteres.
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝

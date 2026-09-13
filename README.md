@@ -1,7 +1,7 @@
 <div align="center">
 
 <img src="assets/bash-icon.svg" width="100">
-<h1 align="center">Proyectos</h1>
+<h1 align="center">Helpers</h1>
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/christian-herrera/helpers)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/christian-herrera/helpers)

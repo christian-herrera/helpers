@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Descifrar archivos",
+            "type": "shell",
+            "command": "gpg --yes -o ports.dev -d ports",
+            "problemMatcher": []
+        },
+        {
+            "label": "Cifrar archivos",
+            "type": "shell",
+            "command": "gpg --yes -o ports -u $signID! -r $encID! -r $enc2ID! -s -e ports.dev",
+            "problemMatcher": []
+        }
+    ]
+}

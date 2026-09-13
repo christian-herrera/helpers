@@ -1,1 +1,0 @@
-gpg -o ports -r $encID! -r $enc2ID! -e ports.dev

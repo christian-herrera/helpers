@@ -15,7 +15,7 @@
    │  └ gpg -u $signID --detach-sign {file}              ⮞ OUT: [Solo firma] en binario
    │
    ├ 🔏 Cifrado Simétrico
-   │  └ gpg --symmetric {file|msg}                       ⮞ Cifra con una contraseña
+   │  ├ gpg --symmetric {file|msg}                       ⮞ Cifra con una contraseña
    │  └ gpg -u $signID --sign --symmetric {file|msg}     ⮞ Cifra con una contraseña y firma
    │
    ├ 🔐 Cifrado Asimétrico
