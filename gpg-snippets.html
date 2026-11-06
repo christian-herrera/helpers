@@ -1,0 +1,54 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+                                                ██████╗ ██████╗  ██████╗ 
+                                               ██╔════╝ ██╔══██╗██╔════╝ 
+                                               ██║  ███╗██████╔╝██║  ███╗
+                                               ██║   ██║██╔═══╝ ██║   ██║
+                                               ╚██████╔╝██║     ╚██████╔╝
+                                                ╚═════╝ ╚═╝      ╚═════╝ 
+                                                ⪼ 𝘽𝙮 𝘾𝙝𝙧𝙞𝙨𝙩𝙞𝙖𝙣 𝙃𝙚𝙧𝙧𝙚𝙧𝙖 ⪻
+
+   ┬ 🔑 Firma Binaria Integrada
+   │  Genera un archivo identico al original pero con la firma incrustada, lo que permite verificar la integridad y
+   │  autenticidad del archivo sin necesidad de un archivo de firma separado.
+   │  ├ gpg -u $signID! --sign {file}                           ⮞ Genera {file.gpg} con la firma incrustada
+   │  ├ gpg --verify {file.gpg}                                 ⮞ Solo verifica la firma
+   │  └ gpg -o {file} --decrypt {file.gpg}                      ⮞ Descifra el archivo firmado
+   │
+   ├ 🔑 Firmar en Texto ASCII
+   │  Envuelve el contenido del archivo en un formato de texto legible, lo que permite copiar y pegar el contenido
+   │  en un correo electrónico o en un mensaje de texto. La firma se incrusta en el contenido del archivo.
+   │  ├ gpg -u $signID! --clear-sign {file}                     ⮞ Genera {file.gpg} (en ASCII)
+   │  └ gpg --verify {file.gpg}                                 ⮞ Solo verifica la firma
+   │
+   ├ 🔑 Firmar Separada
+   │  Genera un archivo con la firma separada del contenido original, lo que permite verificar la firma sin
+   │  necesidad de modificar el archivo original. Esto es útil cuando se desea mantener el archivo original intacto.
+   │  ├ gpg -u $signID! --detach-sign {file}                    ⮞ Genera {file.sig} (en ASCII)
+   │  └ gpg --verify {file.sig}  {file}                         ⮞ Solo verifica la firma
+   │
+   ├ 🔓 Cifrado Simetrico
+   │  Cifra el archivo utilizando una contraseña, lo que permite que cualquier persona con la contraseña pueda
+   │  descifrar el archivo.
+   │  ├ gpg --symetric {file}                                   ⮞ Genera {file.gpg}
+   │  ├ gpg -u $signID! --sign --symetric {file}                ⮞ Genera {file.gpg} pero incrustando la firma
+   │  └ gpg -o file --decrypt {file.gpg}                        ⮞ Descifra el archivo cifrado
+   │
+   ├ 🔓 Cifrado Asimetrico
+   │  Cifra el archivo utilizando la llave pública del receptor, lo que permite que solo el receptor pueda descifrar
+   │  el archivo utilizando su llave privada.
+   │  ├ gpg -r $encID! --encrypt {file}                         ⮞ Cifra con la llave pública del receptor
+   │  ├ gpg -r $encID! -u $signID! --sign --encrypt {file}      ⮞ Cifra, firma internamente y genera {file.gpg}
+   │  └ gpg --decrypt {file.gpg}                                ⮞ Descifra el archivo cifrado
+   │
+   ·  
+   ·  
+   ·
+
+   Notas: 
+    ├ Por defecto, GPG utiliza `.gpg` para archivos binario. Al usar `-a|--armor` se genera `.asc` en texto ASCII.
+    │
+    ├ Se permite usar mas destinatarios con `-r $encID! -r $enc2ID!` para cifrar a multiples llaves publicas.
+    └
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
