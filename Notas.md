@@ -11,6 +11,6 @@
 Utilizar:
 
 ```bash
-gpg -o ports -r $encID! -r $enc2ID! -e ports.dev    # Cifrar
-gpg -o ports.dev -d ports                           # Descifrar
+gpg -o ports -u $signID! -r $encID! -r $enc2ID! -s -e ports.dev    # Cifrar y firma
+gpg -o ports.dev -d ports                                          # Descifrar
 ```

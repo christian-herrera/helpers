@@ -1,0 +1,40 @@
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+
+               ███╗   ███╗ ██████╗ ███████╗ ██████╗ ██╗   ██╗██╗████████╗████████╗ ██████╗ 
+               ████╗ ████║██╔═══██╗██╔════╝██╔═══██╗██║   ██║██║╚══██╔══╝╚══██╔══╝██╔═══██╗
+               ██╔████╔██║██║   ██║███████╗██║   ██║██║   ██║██║   ██║      ██║   ██║   ██║
+               ██║╚██╔╝██║██║   ██║╚════██║██║▄▄ ██║██║   ██║██║   ██║      ██║   ██║   ██║
+               ██║ ╚═╝ ██║╚██████╔╝███████║╚██████╔╝╚██████╔╝██║   ██║      ██║   ╚██████╔╝
+               ╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚═╝   ╚═╝      ╚═╝    ╚═════╝ 
+
+Las siguientes instrucciónes estan pensadas para ser ejecutadas dentro del contenedor de mosquito. La forma
+De usarlo es la siguiente:   
+
+                    docker exec -it {NOMBRE_CONTENEDOR} mosquitto_passwd...............
+
+ ┬ 🔑 Lista usuarios
+ │  └ cut -d: -f1 /path/al/archivo/passwd
+ │
+ ├ 🔏 Crear/Edita usuario
+ │  ├ mosquitto_passwd -b /mosquitto/config/passwd {USER} 
+ │  └ mosquitto_passwd -b /mosquitto/config/passwd {USER} '{CLAVE}'
+ │
+ ├ 🗄️ Eliminar usuario
+ │  └ mosquitto_passwd -D /mosquitto/config/passwd {USER}
+ │
+ │
+ ├ ⚙️ Patrones de acceso (ACL)
+ │  ├ Directivas
+ │  │  ├ user {USER}                                ⮞ Define usuario
+ │  │  ├ pattern                                    ⮞ Define permisos utilizando variables dinámicas.
+ │  │  └ topic {read|write|readwrite|deny} {TOPIC}  ⮞ Permite acciones o deniega acceso a un topic
+ │  │
+ │  └ Comodines
+ │     ├ +   ⮞ Representa un único nivel del tópico.
+ │     ├ #   ⮞ Representa todos los niveles restantes.
+ │     ├ %u  ⮞ Se sustituye por el usuario {USER} que se autentica.
+ │     └ %c  ⮞ Se sustituye por el nombre del cliente (Client ID MQTT)
+ ·  
+ ·  
+ ·
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
