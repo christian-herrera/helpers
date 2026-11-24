@@ -13,34 +13,45 @@
    │  ├ ssh -pXXXX usuario@dominio                      ⮞ Conecta usando el puerto XXXX
    │  └ ssh -pXXXX usuario@dominio 'ls'                 ⮞ Conecta y ejecuta un comando
    │
-   ├ 🐛 Crear túnel V1 (-R ⮞ abre el puerto en el remoto y redirige al local)
-   │  ├ ssh -R [  IP  ]:[ Puerto ]:[  IP  ]:[ Puerto ] user@dominio
-   │  │        └───────┬─────────┘ └─────────┬───────┘
-   │  │                ╰─> Punto donde       ╰─> Destino al que
-   │  │                    se abre en            se conecta el servidor
-   │  │                    el remoto             (visto desde el remoto)
+   ├ 🐛 Túnel Remoto (-R ⮞ EXPONER algo de TU PC en el SERVIDOR,  Tráfico: SERVIDOR ──► TU PC)
+   │  │ (El servidor SSH debe tener `GatewayPorts clientspecified` para que funcione el -R)
+   │  ├ ssh -R [ IP_SERVIDOR ]:[ PUERTO ]:[ IP_TU_RED ]:[ PUERTO ] user@servidor
+   │  │        └───────────┬────────────┘ └──────────┬───────────┘
+   │  │                    ╰─> ENTRADA               ╰─> SALIDA
+   │  │                        Puerto que se abre        Servicio real al que
+   │  │                        en el SERVIDOR            apunta TU PC
    │  │
-   │  └ Ejemplo: ssh -R 0.0.0.0:9000:localhost:80 user@dominio
-   │     └> Abre el puerto 9000 en el servidor y envía tráfico a tu localhost:80
+   │  └ Ejemplo: ssh -R 0.0.0.0:9000:localhost:80 user@servidor
+   │     └> Quien entre a SERVIDOR:9000 termina viendo tu PC:80
    │
    │
-   ├ 🐛 Crear túnel V2 (-L ⮞ abre el puerto en el local y redirige al remoto)   
-   │  ├ ssh -L [  IP  ]:[ Puerto ]:[  IP  ]:[ Puerto ] user@dominio
-   │  │        └───────┬─────────┘ └─────────┬───────┘
-   │  │                ╰─> Punto donde       ╰─> Destino al que
-   │  │                    se abre en            se conecta tu máquina
-   │  │                    la PC local           (visto desde el local)
+   ├ 🐛 Túnel Local (-L ⮞ TRAER algo del SERVIDOR hacia TU PC,  Tráfico: TU PC ──► SERVIDOR)   
+   │  ├ ssh -L [ IP_TU_PC ]:[ PUERTO ]:[ IP_RED_VPS ]:[ PUERTO ] user@servidor
+   │  │        └──────────┬──────────┘ └───────────┬───────────┘
+   │  │                   ╰─> ENTRADA              ╰─> SALIDA
+   │  │                       Puerto que se abre       Servicio real al que
+   │  │                       en TU PC                 apunta el SERVIDOR
    │  │
-   │  └ Ejemplo: ssh -L 127.0.0.1:8080:localhost:80 user@dominio
-   │     └> Abre el puerto 8080 en la PC y redirige al localhost:80 a través del servidor
+   │  └ Ejemplo: ssh -L 127.0.0.1:3307:localhost:3306 user@servidor
+   │     └> Cuando entrás a tu PC:3307 terminás conectado al MySQL (3306) del SERVIDOR
    │
-   ├ 🚪 Saltar por un host intermedio (-J  ⮞ Permite conectarse al Server B a través del Server A)
-   │  └ ssh -J [userA@dominioA:puertoA] [userB@dominioB] -p puertoB
+   ├ 🚪 Salto intermedio / Bastion (-J ⮞ Entrar al SERVER B usando el SERVER A como puente)
+   │  │ (Flujo: TU PC ──► SERVER A [puente] ──► SERVER B [destino])
+   │  │ (Ventaja: tu llave privada NUNCA sale de TU PC; el SERVER A no la ve)
+   │  │
+   │  ├ ssh -J [ userA@serverA:puertoA ] [ userB@serverB ] -p puertoB
+   │  │        └───────────┬───────────┘ └───────┬───────┘
+   │  │                    ╰─> PUENTE            ╰─> DESTINO FINAL
+   │  │                        Primer salto          A donde realmente querés entrar
+   │  │
+   │  └ Ejemplo: ssh -J admin@vps-publico:2222 root@192.168.1.50 -p 22
+   │     └> Entra al vps-publico y desde ahí salta a la IP privada 192.168.1.50
    │
-   ├ 🔑 Reenvío de agente (-A ⮞ Permite que se usen las llaves privadas en el remoto sin copiarlas)
-   │  └ ssh -A user@dominio -p puerto
+   ├ 🔑 Reenvío de agente (-A ⮞ Prestarle tus llaves locales al SERVIDOR temporalmente)
+   │    (Uso típico: hacer `git pull` o `ssh` desde el SERVIDOR usando la llave de TU PC)
+   │    (⚠️ Cuidado: usar solo en servidores de confianza; un root ahí podría usar tu agente)
    │
-   ├ Montar sistema de archivos remoto (apt install sshfs)
+   ├ 🗂️ Montar sistema de archivos remoto (apt install sshfs)
    │  ├ sshfs user@dominio:/ruta/remota /ruta/local   ⮞ Para montar
    │  └ fusermount -u /ruta/local                     ⮞ Para desmontar
    ·
